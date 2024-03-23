@@ -4,18 +4,20 @@ on:
   push:
     branches:
       - master
+      - ci*
   pull_request:
     branches:
       - master
+      - ci*
 
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os:     [ubuntu-18.04, ubuntu-20.04]
-        mode:   [newlib, linux]
-        target: [rv32gc-ilp32d, rv64gc-lp64d]
+        os:     [ubuntu-20.04]
+        mode:   [linux]
+        target: [rv64gcv0p7_zfh_xtheadc-lp64d, rv64gcv_zfh_xtheadc-lp64d]
     steps:
       - uses: actions/checkout@v2
 
